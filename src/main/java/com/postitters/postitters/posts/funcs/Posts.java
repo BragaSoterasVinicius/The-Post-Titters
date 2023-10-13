@@ -1,4 +1,4 @@
-package com.postitters.postitters.funcs;
+package com.postitters.postitters.posts.funcs;
 
 import jakarta.persistence.*;
 import org.springframework.context.annotation.Bean;
@@ -10,9 +10,16 @@ import java.time.LocalDateTime;
 public class Posts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private int id;
+    @Column(name = "POSTAGEMDATA")
     private LocalDateTime dateTime;
+    @Column(name = "TEXTCONTENT")
     private String text_content;
+    @Column(name = "IMAGECONTENT")
+    private String image_url;
+    @Column(name = "ARROBA")
+    private String arroba;
 
     public int getId() {
         return id;
@@ -54,6 +61,4 @@ public class Posts {
         this.arroba = arroba;
     }
 
-    private String image_url;
-    private String arroba;
 }
