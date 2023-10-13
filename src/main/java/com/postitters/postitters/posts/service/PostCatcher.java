@@ -1,7 +1,7 @@
-package com.postitters.postitters.service;
+package com.postitters.postitters.posts.service;
 
-import com.postitters.postitters.funcs.Posts;
-import com.postitters.postitters.repo.PostRepo;
+import com.postitters.postitters.posts.funcs.Posts;
+import com.postitters.postitters.posts.repo.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,10 @@ public class PostCatcher {
     public static List<Posts> AllPosts(){
         return repo.findAll();
     }
+
     public Posts getPostById(Integer id){
         return repo.findById(id).orElse(null);
     }
+
+
 }
