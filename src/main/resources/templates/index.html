@@ -3,6 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PTr.com</title>
+    <link th:href="@{/styles/main.css}" rel="stylesheet"/>
+    <div id="top">
+        <h1>O twitter está morto</h1>
+        <h1>Login</h1>
+    </div>
 </head>
+<body>
+    <div class="blocky">
+        <form th:action="@{/search}" th:object="${searchShit}" method="post">
+            <label for="textInput">Procura agui</label>
+            <input type="text" id="search-input" name="search-input"/>
+            <button type="submit">Peshquisar</button>
+        </form>
+    </div>
+    <div class="blocky">
+    <h1> Postitar?</h1>
+        <form  th:action="@{/postin}" th:object="${formModel}" method="post">
+            <label for="textInput">Postit</label>
+            <input type="text" id="textInput" name="textInput"/>
+            <button type="submit">Poshtar</button>
+        </form>
+    </div>
+
+
+    <div class="blocky">
+    <h1> Posts </h1>
+    <table>
+        <tr th:each="post : ${listposts}">
+            <td th:text="${post.id}"></td>
+            <td th:text="${post.dateTime}"></td>
+            <td th:text="${post.arroba}"></td>
+            <td th:text="${post.text_content}"></td>
+            </tr>
+    </table>
+    </div>
+</body>
+
+
 </html>
