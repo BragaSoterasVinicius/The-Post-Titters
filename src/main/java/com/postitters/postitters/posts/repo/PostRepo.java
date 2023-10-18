@@ -5,7 +5,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -16,6 +15,14 @@ public interface PostRepo extends JpaRepository<Posts, Integer> {
         @Transactional
         @Modifying
         @Query(value="INSERT INTO posts(ARROBA, TEXTCONTENT) VALUES (:Arroba, :textcontent);", nativeQuery = true)
-        void CreatePost(String Arroba, String textcontent);
+        void createPost(String Arroba, String textcontent);
+        @Transactional
+        @Modifying
+        @Query(value="UPDATE posts SET TEXTCONTENT= :textcontent WHERE ID = :id", nativeQuery = true)
+        void putPost(Integer id, String textcontent);
+        @Transactional
+        @Modifying
+        @Query(value="DELETE FROM posts WHERE ID= :id", nativeQuery = true)
+        void deletePost(Integer id);
 
 }

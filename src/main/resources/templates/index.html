@@ -11,6 +11,7 @@
     </div>
 </head>
 <body>
+
     <div class="blocky">
         <form th:action="@{/search}" th:object="${searchShit}" method="post">
             <label for="textInput">Procura agui</label>
@@ -18,12 +19,24 @@
             <button type="submit">Peshquisar</button>
         </form>
     </div>
+
     <div class="blocky">
     <h1> Postitar?</h1>
         <form  th:action="@{/postin}" th:object="${formModel}" method="post">
             <label for="textInput">Postit</label>
             <input type="text" id="textInput" name="textInput"/>
             <button type="submit">Poshtar</button>
+        </form>
+        <form  th:action="@{/alterin}" th:object="${formGetModel}">
+            <label for="intInput2">Modificar</label>
+            <input type="text" id="textInputPut" name="textInputPut"/>
+            <input type="number" id="intInput2" name="intInput2"/>
+            <button type="submit">Poshtar</button>
+        </form>
+        <form  th:action="@{/deletin}" th:object="${formDeleteModel}">
+            <label for="intInput">Delete</label>
+            <input type="number" id="intInput" name="intInput"/>
+            <button type="submit">Deletar</button>
         </form>
     </div>
 
