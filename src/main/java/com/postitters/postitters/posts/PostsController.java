@@ -4,10 +4,8 @@ import com.postitters.postitters.posts.funcs.Posts;
 import com.postitters.postitters.posts.repo.PostRepo;
 import com.postitters.postitters.posts.service.PostCatcher;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -32,6 +30,11 @@ public class PostsController {
         return postCatcher.getPostById(id);
     }
 
+    @GetMapping ("delete/{ide}")
+    public void delete(@PathVariable Integer ide){
+        postRepo.deletePost(ide);
+    }
+
     @GetMapping("/byArroba/{arroba}")
     public List<Posts> getByArromba(@PathVariable String arroba){
         return postRepo.findPostsByArroba(arroba);
@@ -39,6 +42,6 @@ public class PostsController {
 
     @GetMapping("/postin")
     public void poster(){
-        postRepo.CreatePost("@primeiro", "nossa mano como eu amo sneakers meoo.U+1F600");
+        postRepo.createPost("@primeiro", "nossa mano como eu amo sneakers meoo.U+1F600");
     }
 }
