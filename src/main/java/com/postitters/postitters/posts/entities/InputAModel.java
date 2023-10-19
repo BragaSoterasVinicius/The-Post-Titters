@@ -1,4 +1,4 @@
-package com.postitters.postitters.posts.funcs;
+package com.postitters.postitters.posts.entities;
 
 public class InputAModel {
     private String textInput;

@@ -6,21 +6,24 @@
     <title>PTr.com</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet"/>
     <div id="top">
+        <div class="flex-box">
         <h1>O twitter está morto</h1>
-        <h1>Login</h1>
+        <h1  id="topright">Login</h1>
+        </div>
     </div>
 </head>
 <body>
 
-    <div class="blocky">
-        <form th:action="@{/search}" th:object="${searchShit}" method="post">
+    <div class="blocky" id="searchbar">
+        <form th:action="@{/searchPage}" th:href="@{searchPage}" th:object="${searchShit}" method="post">
             <label for="textInput">Procura agui</label>
             <input type="text" id="search-input" name="search-input"/>
             <button type="submit">Peshquisar</button>
         </form>
     </div>
 
-    <div class="blocky">
+    <div class="flex-box">
+    <div class="blocky" id="esquerda">
     <h1> Postitar?</h1>
         <form  th:action="@{/postin}" th:object="${formModel}" method="post">
             <label for="textInput">Postit</label>
@@ -35,22 +38,34 @@
         </form>
         <form  th:action="@{/deletin}" th:object="${formDeleteModel}">
             <label for="intInput">Delete</label>
-            <input type="number" id="intInput" name="intInput"/>
+            <input type="number" id="intInput" name="intInput" maxlength="14"/>
             <button type="submit">Deletar</button>
         </form>
     </div>
-
-
-    <div class="blocky">
+    <div class="blocky" id="central_box">
     <h1> Posts </h1>
-    <table>
-        <tr th:each="post : ${listposts}">
-            <td th:text="${post.id}"></td>
-            <td th:text="${post.dateTime}"></td>
-            <td th:text="${post.arroba}"></td>
-            <td th:text="${post.text_content}"></td>
-            </tr>
-    </table>
+    
+        <div th:each="post : ${listposts}" class="postB">
+            <div class="side">
+                <p th:text="${post.id}"></p>
+            </div>
+            <div class="middle">
+                <div class="l"> <p th:text="${post.arroba}"/></div>
+                <div class="r">
+                    <p th:text="${post.text_content}"></p>
+
+                    <div class="down">
+                        <p th:text="${post.dateTime}"></p>
+                    </div></div>
+            </div>
+            <!--p th:text="${post.dateTime}"></p-->
+        </div>
+    </div>
+    <div class="blocky" id="memes" th:each="redditIma : ${redditposts}">
+        <div class="blocky">
+            <img th:src="${redditIma}"/>
+        </div>
+    </div>
     </div>
 </body>
 

@@ -1,7 +1,53 @@
 #top{
     background-color:blue;
     color: aliceblue;}
+#topright{
+    right: 10px;
+    position: absolute;
+}
+#searchbar{
+    margin-bottom: 10px;
+}
 .blocky{
-    border-color: crimson;
+    border-color: purple;
     border-style: double;
+}
+.postB{
+    border-color: gray;
+    border-style: solid;
+    border-width: 0.5px;
+    display: flex;
+}
+.flex-box{
+    display: flex;
+}
+.middle{
+    display: flex;
+}
+.l{
+    background-color: red;
+    height: 100%;
+    flex: 1;
+}
+.r{
+    padding-left: 5px;
+}
+.down{
+    bottom: 0px;
+}
+#esquerda{
+    width: 35%;
+    float:left;
+    line-height: 30px;
+    height: 100%;
+    min-height: 100vh;
+}
+#central_box{
+}
+#memes{
+    float: left;
+    width: 20%;
+}
+img{
+    width: -webkit-fill-available;
 }
