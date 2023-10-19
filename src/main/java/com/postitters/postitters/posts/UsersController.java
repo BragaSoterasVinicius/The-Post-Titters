@@ -1,6 +1,6 @@
 package com.postitters.postitters.posts;
 
-import com.postitters.postitters.posts.funcs.Users;
+import com.postitters.postitters.posts.entities.Users;
 import com.postitters.postitters.posts.repo.UserRepo;
 import com.postitters.postitters.posts.service.PostCatcher;
 import com.postitters.postitters.posts.service.UserCatcher;

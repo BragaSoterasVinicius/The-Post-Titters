@@ -1,9 +1,6 @@
-package com.postitters.postitters.posts.funcs;
+package com.postitters.postitters.posts.entities;
 
 import jakarta.persistence.*;
-import org.springframework.context.annotation.Bean;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")

@@ -1,11 +1,9 @@
 package com.postitters.postitters.posts.service;
 
-import com.postitters.postitters.posts.funcs.Posts;
-import com.postitters.postitters.posts.repo.PostRepo;
 import com.postitters.postitters.posts.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.postitters.postitters.posts.funcs.Users;
+import com.postitters.postitters.posts.entities.Users;
 
 import java.util.List;
 @Service
