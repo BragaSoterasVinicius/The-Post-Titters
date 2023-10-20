@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTr.com</title>
+    <link th:href="@{/styles/main.css}" rel="stylesheet"/>
+    <div id="top">
+        <div class="flex-box">
+            <h1>O twitter está morto</h1>
+        </div>
+    </div>
+</head>
+<body>
+    <div class="blocky" id="cadastrom">
+        <div style="align-content: center">
+            <form th:action="@{/cadastrar}" th:object="${cadastroModel}" method="post">
+                <label for="name"/>
+                <input type="text" id="name" name="name"/><br/>
+                <label for="arromba"/>
+                <input type="text" id="arromba" name="arromba"/><br/>
+                <label for="pasword"/>
+                <input type="text" id="pasword" name="pasword"/><br/>
+                <button type="submit">Assino</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

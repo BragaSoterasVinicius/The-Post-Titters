@@ -10,8 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,6 +26,8 @@ public class TemplateController {
     private final PostCatcher postCatcher;
     private final PostRepo postRepo;
     private final MemeController memeController;
+
+    public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/src/main/resources/static/pics";
     @Autowired
     public TemplateController(PostCatcher postCatcher, PostRepo postRepo, MemeController memeController) {
         this.postCatcher = postCatcher;
@@ -42,12 +48,36 @@ public class TemplateController {
     }
 
     @PostMapping("/postin")
-    public String poster(@ModelAttribute("inputAModel") InputAModel formModel, Model model) throws IOException, ParseException {
+    public String poster(@ModelAttribute("inputAModel")
+                             InputAModel formModel,
+                         Model model, @RequestParam("image") MultipartFile file)
+                        throws IOException, ParseException {
+        String imgUrl = null;
+        System.out.println("la vai ele");
         model.addAttribute("formModel", new InputAModel());
         String textInput = formModel.getTextInput();
 
-        postRepo.createPost("@primeiro", textInput);
+        System.out.println("Oi meu nome eh"+file);
+        System.out.println("ja chegamos aqui");
+
+
+
+            StringBuilder fileNames = new StringBuilder();
+            Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
+
+        if(file.getSize()>0) {System.out.println( "FUCKKK");
+            imgUrl = file.getOriginalFilename();
+            fileNames.append(file.getOriginalFilename());
+            Files.write(fileNameAndPath, file.getBytes());
+            System.out.println("mitada violenta"+ imgUrl);
+            model.addAttribute("msg", "Uploaded images " + fileNames.toString());
+        }else{
+            System.out.println("ih la ele");
+        }
+
+        postRepo.createPost("@primeiro", textInput, imgUrl);
         getMainPosts(model);
+        System.out.println("mitada muito violenta fin");
         return "index";
     }
 
