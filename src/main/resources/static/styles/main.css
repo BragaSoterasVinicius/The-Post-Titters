@@ -1,3 +1,6 @@
+html{
+    background-image: url("../pics/Postitters background.png");
+}
 #top{
     background-color:blue;
     color: aliceblue;}
@@ -8,9 +11,39 @@
 #searchbar{
     margin-bottom: 10px;
 }
+#cadastrom{
+    width: 350px;
+    height: 750px;
+    margin-top: 46px;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    padding-top: 150px;
+    text-align: -webkit-center;
+}
+#esquerda{
+    width: 35%;
+    float:left;
+    line-height: 30px;
+    height: 100%;
+    min-height: 100vh;
+}
+#central_box{
+}
+#memes{
+    float: left;
+    width: 20%;
+}
+#img{
+    width: -webkit-fill-available;
+}
+.aligned{
+    border-radius: 15px;
+}
 .blocky{
     border-color: purple;
     border-style: double;
+    background-color: aqua;
 }
 .postB{
     border-color: gray;
@@ -28,26 +61,10 @@
     background-color: red;
     height: 100%;
     flex: 1;
+    padding-right: 7px;
 }
 .r{
-    padding-left: 5px;
 }
 .down{
     bottom: 0px;
-}
-#esquerda{
-    width: 35%;
-    float:left;
-    line-height: 30px;
-    height: 100%;
-    min-height: 100vh;
-}
-#central_box{
-}
-#memes{
-    float: left;
-    width: 20%;
-}
-img{
-    width: -webkit-fill-available;
 }

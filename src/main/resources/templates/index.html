@@ -11,6 +11,7 @@
         <h1  id="topright">Login</h1>
         </div>
     </div>
+    <link rel="stylesheet" href="../static/styles/main.css">
 </head>
 <body>
 
@@ -25,14 +26,16 @@
     <div class="flex-box">
     <div class="blocky" id="esquerda">
     <h1> Postitar?</h1>
-        <form  th:action="@{/postin}" th:object="${formModel}" method="post">
+        <form  th:action="@{/postin}" th:object="${formModel}" method="post" enctype="multipart/form-data">
             <label for="textInput">Postit</label>
             <input type="text" id="textInput" name="textInput"/>
+            <input type="file" id="image" name="image" accept="image/*" class="form-control-file"/>
             <button type="submit">Poshtar</button>
         </form>
         <form  th:action="@{/alterin}" th:object="${formGetModel}">
-            <label for="intInput2">Modificar</label>
+            <label for="textInputPut">Modificar</label>
             <input type="text" id="textInputPut" name="textInputPut"/>
+            <label for="intInput2">Modificar</label>
             <input type="number" id="intInput2" name="intInput2"/>
             <button type="submit">Poshtar</button>
         </form>
@@ -41,6 +44,7 @@
             <input type="number" id="intInput" name="intInput" maxlength="14"/>
             <button type="submit">Deletar</button>
         </form>
+        <p th:if="${msg != null}" th:text="${msg}"/>
     </div>
     <div class="blocky" id="central_box">
     <h1> Posts </h1>
@@ -52,18 +56,17 @@
             <div class="middle">
                 <div class="l"> <p th:text="${post.arroba}"/></div>
                 <div class="r">
-                    <p th:text="${post.text_content}"></p>
-
+                    <p style="padding-left: 12px" th:text="${post.text_content}"></p>
+                    <img class="aligned" th:if="${post.getImage_url() != null}" th:src="'pics/' + ${post.getImage_url()}" alt="no shit sherlock"/>
                     <div class="down">
                         <p th:text="${post.dateTime}"></p>
                     </div></div>
             </div>
-            <!--p th:text="${post.dateTime}"></p-->
         </div>
     </div>
     <div class="blocky" id="memes" th:each="redditIma : ${redditposts}">
         <div class="blocky">
-            <img th:src="${redditIma}"/>
+            <img id="img" th:src="${redditIma}"/>
         </div>
     </div>
     </div>

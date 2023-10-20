@@ -42,6 +42,6 @@ public class PostsController {
 
     @GetMapping("/postin")
     public void poster(){
-        postRepo.createPost("@primeiro", "nossa mano como eu amo sneakers meoo.U+1F600");
+        postRepo.createPost("@primeiro", "nossa mano como eu amo sneakers meoo.U+1F600", null);
     }
 }
