@@ -8,7 +8,10 @@
     <div id="top">
         <div class="flex-box">
         <h1>O twitter está morto</h1>
-        <h1  id="topright">Login</h1>
+            <div id="topright" th:switch="${Usernick != null}">
+                <h1 th:case ="${false}"><a th:href="@{login}">Login</a></h1>
+                <h1 th:case ="${true}" th:text="${Usernick}"></h1>
+            </div>
         </div>
     </div>
     <link rel="stylesheet" href="../static/styles/main.css">

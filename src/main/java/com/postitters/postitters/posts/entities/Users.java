@@ -16,6 +16,17 @@ public class Users {
     @Column(name = "NICK")
     private String nick;
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    @Column(name = "SNH")
+    private String senha;
+
     public String getArroba() {
         return arroba;
     }
