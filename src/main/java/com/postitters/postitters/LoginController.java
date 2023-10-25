@@ -1,38 +1,47 @@
 package com.postitters.postitters;
 
 import com.postitters.postitters.posts.entities.Users;
-import com.postitters.postitters.posts.repo.PostRepo;
 import com.postitters.postitters.posts.repo.UserRepo;
+import com.postitters.postitters.posts.service.PasswordVerifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class CadastroController {
+public class LoginController {
+
+    public Users actualUser = new Users();
 
     @Autowired
     private final UserRepo userRepo;
 
-    public CadastroController( UserRepo userRepo) {
+    @Autowired
+    private final PasswordVerifier senTest;
+    public LoginController(UserRepo userRepo, PasswordVerifier senTest) {
         this.userRepo = userRepo;
+        this.senTest = senTest;
     }
-    @GetMapping("/cadastro")
+    @GetMapping("/login")
     public String pimbas(Model model, @ModelAttribute("Users") Users userCadastro){
-        return "cadastro";
+        return "login";
 
     }
-    @GetMapping("/cadastrar")
+    @GetMapping("/loggers")
     public String interfaceCadastral(Model model, @ModelAttribute("Users") Users userCadastro){
-        model.addAttribute("cadastroModel", new Users());
+        model.addAttribute("loginModel", new Users());
         String nick = userCadastro.getNick();
         String arroba = userCadastro.getArroba();
         String senha = userCadastro.getSenha();
-        System.out.println("cadastra ae ");
+        System.out.println("verifica ae ");
         System.out.println(nick + arroba+ senha);
-        userRepo.CreateUser(arroba,nick,senha);
+        if(senTest.passwordVerifier(arroba, senha)){
+            actualUser.setArroba(arroba);
+            actualUser.setNick(nick);
+
+            System.out.println("boa bola!");
+        }
         return "redirect:/home";
 
     }

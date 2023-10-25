@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PTr.com</title>
+    <title>Login PTr.com</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet"/>
     <div id="top">
         <div class="flex-box">
@@ -12,9 +11,9 @@
     </div>
 </head>
 <body>
-    <div class="blocky" id="cadastrom">
+    <div class="blocky" id="login">
         <div style="align-content: center">
-            <form th:action="@{/cadastrar}" th:object="${cadastroModel}">
+            <form th:action="@{/loggers}" th:object="${loginModel}">
                 <label for="nick">Nome</label>
                 <input type="text" id="nick" name="nick"/><br/>
 
@@ -25,6 +24,8 @@
                 <input type="text" id="senha" name="senha"/><br/>
 
                 <button type="submit">Assino</button>
+
+                <a th:href="@{/cadastro}">Sem conta?</a>
             </form>
         </div>
     </div>

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,16 +27,22 @@ public class TemplateController {
     private final PostRepo postRepo;
     private final MemeController memeController;
 
+    private final LoginController loginController;
+
     public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/src/main/resources/static/pics";
     @Autowired
-    public TemplateController(PostCatcher postCatcher, PostRepo postRepo, MemeController memeController) {
+    public TemplateController(PostCatcher postCatcher, PostRepo postRepo, MemeController memeController, LoginController loginController) {
         this.postCatcher = postCatcher;
         this.postRepo = postRepo;
         this.memeController = memeController;
+        this.loginController = loginController;
     }
 
-    @GetMapping
+
+    @GetMapping("/home")
     public String getMainPosts(Model model) throws IOException, ParseException {
+        String username = loginController.actualUser.getNick();
+        model.addAttribute("Usernick", username);
         List<Posts> posts = postCatcher.AllPosts();
         Collections.reverse(posts);
         model.addAttribute("listposts", posts);
@@ -75,10 +81,10 @@ public class TemplateController {
             System.out.println("ih la ele");
         }
 
-        postRepo.createPost("@primeiro", textInput, imgUrl);
+        postRepo.createPost(loginController.actualUser.getArroba(), textInput, imgUrl);
         getMainPosts(model);
         System.out.println("mitada muito violenta fin");
-        return "index";
+        return "redirect:/home";
     }
 
     @GetMapping("/alterin")
