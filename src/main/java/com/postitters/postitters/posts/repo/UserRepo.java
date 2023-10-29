@@ -18,4 +18,7 @@ public interface UserRepo  extends JpaRepository<Users, String> {
 
     @Query(value = "SELECT SNH FROM users WHERE ARROBA = :userArroba", nativeQuery = true)
     String findLogByArroba(String userArroba);
+
+    @Query(value = "SELECT NICK FROM users WHERE ARROBA = :userArroba", nativeQuery = true)
+    String findNickByArroba(String userArroba);
 }

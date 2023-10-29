@@ -31,15 +31,14 @@ public class LoginController {
     @GetMapping("/loggers")
     public String interfaceCadastral(Model model, @ModelAttribute("Users") Users userCadastro){
         model.addAttribute("loginModel", new Users());
-        String nick = userCadastro.getNick();
         String arroba = userCadastro.getArroba();
         String senha = userCadastro.getSenha();
         System.out.println("verifica ae ");
-        System.out.println(nick + arroba+ senha);
+        System.out.println(arroba+ senha);
         if(senTest.passwordVerifier(arroba, senha)){
             actualUser.setArroba(arroba);
+            String nick = userRepo.findNickByArroba(arroba);
             actualUser.setNick(nick);
-
             System.out.println("boa bola!");
         }
         return "redirect:/home";
