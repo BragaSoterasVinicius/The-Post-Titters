@@ -15,6 +15,9 @@
         </div>
     </div>
     <link rel="stylesheet" href="../static/styles/main.css">
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
 </head>
 <body>
 
@@ -26,7 +29,7 @@
         </form>
     </div>
 
-    <div class="flex-box">
+    <div class="flex-box" id="centraliza">
     <div class="blocky" id="esquerda">
     <h1> Postitar?</h1>
         <form  th:action="@{/postin}" th:object="${formModel}" method="post" enctype="multipart/form-data">
@@ -51,16 +54,22 @@
     </div>
     <div class="blocky" id="central_box">
     <h1> Posts </h1>
-    
+
         <div th:each="post : ${listposts}" class="postB">
             <div class="side">
                 <p th:text="${post.id}"></p>
             </div>
             <div class="middle">
-                <div class="l"> <p th:text="${post.arroba}"/></div>
+                <div class="l">aa</div>
                 <div class="r">
+                    <p th:text="${post.arroba}"/>
                     <p style="padding-left: 12px" th:text="${post.text_content}"></p>
-                    <img class="aligned" th:if="${post.getImage_url() != null}" th:src="'pics/' + ${post.getImage_url()}" alt="no shit sherlock"/>
+                    <a th:href="@{'/pics/' + ${post.getImage_url()}}">
+                        <img class="aligned" th:if="${post.getImage_url() != null}"
+                             th:src="@{'/pics/' + ${post.getImage_url()}}"
+                             alt="no shit sherlock"/>
+                    </a>
+
                     <div class="down">
                         <p th:text="${post.dateTime}"></p>
                     </div></div>

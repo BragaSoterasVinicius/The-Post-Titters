@@ -21,16 +21,27 @@ html{
     padding-top: 150px;
     text-align: -webkit-center;
 }
+#centraliza{
+    width: 50%;
+    margin: auto;
+}
 #esquerda{
-    width: 35%;
+    top: 0px;
+    position: sticky;
+    width: 275px;
     float:left;
     line-height: 30px;
     height: 100%;
     min-height: 100vh;
 }
 #central_box{
+
+    width: 600px;
 }
 #memes{
+    top: 0px;
+    position: sticky;
+    height: fit-content;
     float: left;
     width: 20%;
 }
