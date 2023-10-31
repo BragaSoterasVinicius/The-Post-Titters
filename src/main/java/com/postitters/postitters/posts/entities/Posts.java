@@ -13,12 +13,24 @@ public class Posts {
     private int id;
     @Column(name = "POSTAGEMDATA")
     private LocalDateTime dateTime;
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
     @Column(name = "TEXTCONTENT")
     private String text_content;
     @Column(name = "IMAGECONTENT")
     private String image_url;
     @Column(name = "ARROBA")
     private String arroba;
+
+    @Column(name = "LIKES")
+    private int likes;
 
     public int getId() {
         return id;

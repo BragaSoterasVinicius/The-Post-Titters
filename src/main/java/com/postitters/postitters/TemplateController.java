@@ -1,6 +1,7 @@
 package com.postitters.postitters;
 
 import com.postitters.postitters.posts.MemeController;
+import com.postitters.postitters.posts.entities.GostarAModel;
 import com.postitters.postitters.posts.entities.InputAModel;
 import com.postitters.postitters.posts.entities.Posts;
 import com.postitters.postitters.posts.repo.PostRepo;
@@ -38,11 +39,15 @@ public class TemplateController {
         this.loginController = loginController;
     }
 
-
+    @GetMapping
+    public String mainVer(Model model){
+        return "login";
+    }
     @GetMapping("/home")
     public String getMainPosts(Model model) throws IOException, ParseException {
         String username = loginController.actualUser.getNick();
         model.addAttribute("Usernick", username);
+
         List<Posts> posts = postCatcher.AllPosts();
         Collections.reverse(posts);
         model.addAttribute("listposts", posts);
@@ -80,8 +85,11 @@ public class TemplateController {
         }else{
             System.out.println("ih la ele");
         }
-
-        postRepo.createPost(loginController.actualUser.getArroba(), textInput, imgUrl);
+        if(loginController.actualUser.getArroba() !=null){
+        postRepo.createPost(loginController.actualUser.getArroba(), textInput, imgUrl);}
+        else{
+            return "login";
+        }
         getMainPosts(model);
         System.out.println("mitada muito violenta fin");
         return "redirect:/home";
@@ -111,9 +119,18 @@ public class TemplateController {
         return "index";
     }
 
+    @RequestMapping("/goshtei")
+    public String gostei(Model model, @ModelAttribute("GostarAModel") GostarAModel formModel){
+        model.addAttribute("gostar", new GostarAModel());
+        Integer id = formModel.getId();
+        postCatcher.gosteiDoPost(id);
+        return "redirect:/home";
+    }
+
     @RequestMapping("/searchPage")
     public String searches(@ModelAttribute("inputAModel") InputAModel formModel, Model model) {
         return "searchPage";
     }
+
 
 }

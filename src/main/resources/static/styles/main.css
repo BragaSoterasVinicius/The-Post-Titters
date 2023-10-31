@@ -1,5 +1,6 @@
 html{
-    background-image: url("../pics/Postitters background.png");
+    /*background-image: url("../pics/Postitters background.png");*/
+    background-color: white;
 }
 #top{
     background-color:blue;
@@ -82,5 +83,7 @@ html{
     width: 100%;
 }
 .down{
+    right: 0px;
+    display: flex;
     bottom: 0px;
 }
