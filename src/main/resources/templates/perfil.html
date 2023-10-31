@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PTr.com</title>
+    <title>User</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet"/>
     <div id="top">
         <div class="flex-box">
-        <h1>O twitter está morto</h1>
+            <h1>O twitter está morto</h1>
             <div id="topright" th:switch="${Usernick != null}">
                 <h1 th:case ="${false}"><a th:href="@{login}">Login</a></h1>
                 <h1 th:case ="${true}" th:text="${Usernick}"></h1>
@@ -21,17 +21,17 @@
 </head>
 <body>
 
-    <div class="blocky" id="searchbar">
-        <form th:action="@{/searchPage}" th:href="@{searchPage}" th:object="${searchShit}" method="post">
-            <label for="textInput">Procura agui</label>
-            <input type="text" id="search-input" name="search-input"/>
-            <button type="submit">Peshquisar</button>
-        </form>
-    </div>
+<div class="blocky" id="searchbar">
+    <form th:action="@{/searchPage}" th:href="@{searchPage}" th:object="${searchShit}" method="post">
+        <label for="textInput">Procura agui</label>
+        <input type="text" id="search-input" name="search-input"/>
+        <button type="submit">Peshquisar</button>
+    </form>
+</div>
 
-    <div class="flex-box" id="centraliza">
+<div class="flex-box" id="centraliza">
     <div class="blocky" id="esquerda">
-    <h1> Postitar?</h1>
+        <h1> Postitar?</h1>
         <form  th:action="@{/postin}" th:object="${formModel}" method="post" enctype="multipart/form-data">
             <label for="textInput">Postit</label>
             <input type="text" id="textInput" name="textInput"/>
@@ -53,16 +53,13 @@
         <p th:if="${msg != null}" th:text="${msg}"/>
     </div>
     <div class="blocky" id="central_box">
-    <h1> Posts </h1>
+        <h1> Posts </h1>
 
         <div th:each="post : ${listposts}" class="postB">
-            <div class="side">
-                <p th:text="${post.id}"></p>
-            </div>
             <div class="middle">
                 <div class="l">aa</div>
                 <div class="r">
-                    <p th:text="${post.arroba}"/>
+                    <p th:text="${post.getArroba()}"/>
                     <p style="padding-left: 12px" th:text="${post.text_content}"></p>
                     <a th:href="@{'/pics/' + ${post.getImage_url()}}">
                         <img class="aligned" th:if="${post.getImage_url() != null}"
@@ -83,7 +80,7 @@
             <img id="img" th:src="${redditIma}"/>
         </div>
     </div>
-    </div>
+</div>
 </body>
 
 

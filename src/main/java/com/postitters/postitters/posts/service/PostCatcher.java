@@ -23,5 +23,10 @@ public class PostCatcher {
         return repo.findById(id).orElse(null);
     }
 
+    public void gosteiDoPost(Integer id){
+    }
 
+    public void getPostByArroba(String arroba) {
+        repo.findPostsByArroba(arroba);
+    }
 }

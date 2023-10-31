@@ -28,7 +28,7 @@ public class CadastroController {
     public String interfaceCadastral(Model model, @ModelAttribute("Users") Users userCadastro){
         model.addAttribute("cadastroModel", new Users());
         String nick = userCadastro.getNick();
-        String arroba = userCadastro.getArroba();
+        String arroba = "@"+userCadastro.getArroba();
         String senha = userCadastro.getSenha();
         System.out.println("cadastra ae ");
         System.out.println(nick + arroba+ senha);
