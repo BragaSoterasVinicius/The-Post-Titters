@@ -27,9 +27,7 @@ public class TemplateController {
     private final PostCatcher postCatcher;
     private final PostRepo postRepo;
     private final MemeController memeController;
-
     private final LoginController loginController;
-
     public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/src/main/resources/static/pics";
     @Autowired
     public TemplateController(PostCatcher postCatcher, PostRepo postRepo, MemeController memeController, LoginController loginController) {
